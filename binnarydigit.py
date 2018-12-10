@@ -1,12 +1,12 @@
 import tweepy
 import time
-#ces informations deverons etre changé par les votres elle sont strictement personnelles
+#ces informations deverons être changé par les votres elles sont strictement personnelles
 CONSUMER_KEY=""
 CONSUMER_SECRET=""
 ACCESS_KEY="-"
 ACCESS_SECRET=""
 
-#les trois instruction suivante pour ce connecter a tweeter en utilisant l'APi creé sur https://developer.twitter.com/
+#les trois instructions suivantes pour ce connecter a tweeter en utilisant l'APi creé sur https://developer.twitter.com/
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
@@ -39,5 +39,5 @@ def replayToTweets():
 while True:
     #appele a la oncion qui repond au tweet
     replayToTweets()
-    #le programme sarrete apres chaque 1mnt car le nombre de requetes pemis par twitter est de 15 par 15mnt
+    #le programme sarrete apres chaque 1mnt car le nombre de requetes permis par twitter est de 15 par 15mnt
     time.sleep(60000)
