@@ -25,19 +25,19 @@ def storeLastId(lastId,filename):
     f_write.close()
 
 def replayToTweets():
-    #recuperer l'id enregistre dans le fichier
+    #récuperer l'id enregistre dans le fichier
     lastId=retriveLastId(fileName)
-    #extraire les tweet concernant macron
+    #extraire les tweets concernant macron
     mentions=api.search('macron',count=100,since_id=lastId)
     #parcourir chaque tweet et lui repondre
     for mention in reversed(mentions):
         storeLastId(mention.id, fileName)
-        #eviter de repondre a ces tweet
+        #eviter de répondre a ces tweet personnel
         if mention.user.screen_name != "BinnaryDigit":
             print('Entrain de répondre...')
             api.update_status("@"+mention.user.screen_name+"  please, follow us on twitter.com/BinnaryDigit !?",mention.id)
 while True:
-    #appele a la oncion qui repond au tweet
+    #appele a la fonction qui répond au tweet
     replayToTweets()
     #le programme sarrete apres chaque 1mnt car le nombre de requetes permis par twitter est de 15 par 15mnt
     time.sleep(60000)
